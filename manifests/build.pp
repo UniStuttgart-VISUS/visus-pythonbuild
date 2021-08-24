@@ -25,7 +25,7 @@ define pythonbuild::build(
     archive { $src_file:
         source => $url,
         extract => true,
-        extract_path => dirname($src_dir),
+        extract_path => $source_dir,
         creates => $src_dir,
         cleanup => true,
         user => 'root',

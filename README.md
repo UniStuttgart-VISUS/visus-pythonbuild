@@ -52,7 +52,7 @@ can change the target for make, e.g. if you want to perform a system-wide instal
 instead of adding an alternative version. The following specifies what would be
 the default for Python 3.9.6:
 
-```
+```puppet
 class { 'pythonbuild':
     versions => {
         '3.9.6' => {
@@ -63,6 +63,21 @@ class { 'pythonbuild':
     }
 }
 ```
+
+Should you have the need to add additional build depdencies, this is best done
+via Hiera. The following is the default configuration which is applied to all
+platforms:
+
+```yaml
+pythonbuild::build_dependencies:
+  - gcc
+  - make
+  - autoconf
+```
+
+If you need to force a rebuild, this can be achieved by deleting the source
+directory. This is located in `/usr/local/src` or at the location specified as
+`$source_dir` parameter.
 
 ## Limitations
 

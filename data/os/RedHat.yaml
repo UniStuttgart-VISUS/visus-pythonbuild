@@ -1,4 +1,9 @@
----
+lookup_options:
+  pythonbuild::build_dependencies:
+    merge:
+      strategy: deep
+      merge_hash_arrays: true
+
 pythonbuild::build_dependencies:
   - openssl-devel
   - libffi-devel
