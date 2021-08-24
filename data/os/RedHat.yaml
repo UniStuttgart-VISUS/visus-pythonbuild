@@ -1,0 +1,5 @@
+---
+pythonbuild::build_dependencies:
+  - openssl-devel
+  - libffi-devel
+  - bzip2-devel

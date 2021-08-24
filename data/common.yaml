@@ -1,0 +1,5 @@
+---
+pythonbuild::build_dependencies:
+  - gcc
+  - make
+  - autoconf
