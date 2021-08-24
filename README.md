@@ -9,9 +9,9 @@ and performing an altinstall.
 1. [Setup – The basics of getting started with pythonbuild](#setup)
     * [Setup requirements](#setup-requirements)
     * [Beginning with pythonbuild](#beginning-with-pythonbuild)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
+1. [Usage – Configuration options and additional functionality](#usage)
+1. [Limitations – OS compatibility, etc.](#limitations)
+1. [Development – Guide for contributing to the module](#development)
 
 ## Description
 
@@ -25,33 +25,44 @@ This process will install a binary that can be invoked, for instance, as
 
 ## Setup
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-TODO 
-
-If your module requires anything extra before setting up (pluginsync enabled,
-another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section here.
+The module required autoconf, gcc, make and several libraries to be installed.
+These packages are automatically installed when specified in as
+`$build_dependencies`.
 
 ### Beginning with pythonbuild
 
-TODO
+The `pythonbuild` class enables installation of multiple versions. The following
+installs Python 3.9.6 without any build customisation:
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most basic
-use of the module.
+```
+class { 'pythonbuild':
+    versions => {
+        '3.9.6' => { }
+    }
+}
+```
 
 ## Usage
 
-TODO:
+The hash per version can be used to configure `phythonbuild::build`, most
+notably you can override the full source path for the download. Furthermore, you
+can change the target for make, e.g. if you want to perform a system-wide install
+instead of adding an alternative version. The following specifies what would be
+the default for Python 3.9.6:
 
-Include usage examples for common use cases in the **Usage** section. Show your
-users how to use your module to solve problems, and be sure to include code
-examples. Include three to five examples of the most important or common tasks a
-user can accomplish with your module. Show users how to accomplish more complex
-tasks that involve different types, classes, and functions working in tandem.
+```
+class { 'pythonbuild':
+    versions => {
+        '3.9.6' => {
+            override_url => 'https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz',
+            configure_flags => '--enable-optimizations',
+            make_target => 'altinstall'
+        }
+    }
+}
+```
 
 ## Limitations
 
