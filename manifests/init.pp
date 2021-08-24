@@ -7,7 +7,8 @@
 # @param base_url The base URL where the Python sources are downloaded from.
 #                 This defaults to the FTP directory on python.org.
 # @param build_dependencies A list of packages that need to be installed in
-#                           order to successfully build Python.
+#                           order to successfully build Python. These
+#                           dependencies should be specified via Hiera.
 # @param versions The Python versions to be downloaded and installed. The keys
 #                 of the hash are the version numbers. The values are a hash
 #                 holding additional parameters passed to the build process.

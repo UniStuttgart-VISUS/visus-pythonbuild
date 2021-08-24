@@ -55,7 +55,8 @@ Default value: `'https://www.python.org/ftp/python'`
 Data type: `Array[String]`
 
 A list of packages that need to be installed in
-order to successfully build Python.
+order to successfully build Python. These
+dependencies should be specified via Hiera.
 
 ##### <a name="versions"></a>`versions`
 
