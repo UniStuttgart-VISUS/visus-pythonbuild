@@ -34,7 +34,7 @@ define pythonbuild::build(
     }
 
     # Build by configuring followed by make.
-    exec { "autoconf-${title}":
+    ~> exec { "autoconf-${title}":
         path => '/usr/bin:/bin:/usr/sbin:/sbin',
         cwd => $src_dir,
         command => 'autoconf',
