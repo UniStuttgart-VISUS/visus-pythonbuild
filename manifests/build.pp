@@ -52,7 +52,7 @@ define pythonbuild::build(
         command => "make ${make_target}",
         refreshonly => true
     }
-    ~> exec { 'ldconfig-${title}':
+    ~> exec { "ldconfig-${title}":
         path => '/usr/bin:/bin:/usr/sbin:/sbin',
         command => 'ldconfig',
         refreshonly => true
