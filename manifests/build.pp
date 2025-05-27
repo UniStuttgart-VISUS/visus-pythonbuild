@@ -35,7 +35,7 @@ define pythonbuild::build(
 
     # Build by configuring followed by make.
     ~> exec { "autoconf-${title}":
-        path => '/usr/bin:/bin:/usr/sbin:/sbin',
+        path => '/opt/rh/autoconf271/bin:/usr/bin:/bin:/usr/sbin:/sbin',
         cwd => $src_dir,
         command => 'autoconf',
         refreshonly => true
@@ -50,7 +50,8 @@ define pythonbuild::build(
         path => '/usr/bin:/bin:/usr/sbin:/sbin',
         cwd => $src_dir,
         command => "make ${make_target}",
-        refreshonly => true
+        refreshonly => true,
+	timeout => 0
     }
     ~> exec { "ldconfig-${title}":
         path => '/usr/bin:/bin:/usr/sbin:/sbin',

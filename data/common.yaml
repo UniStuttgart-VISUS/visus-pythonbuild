@@ -3,3 +3,4 @@ pythonbuild::build_dependencies:
   - gcc
   - make
   - autoconf
+  - autoconf-latest
